@@ -1,0 +1,13 @@
+<div class="cells" [ngStyle]="ngStyleCells">
+  <div class="cell" [ngStyle]="ngStyleCell(idx)" *ngFor="let cell of cells; let idx = index;"></div>
+</div>
+
+<div>
+  Length: {{this.snake.tail.length + 1}}
+</div>
+<div>
+  Time Played: {{this.time * this.timestep / 1000 | number:'1.0-0'}} s
+</div>
+<div *ngIf="dead">
+  You died.
+</div>
