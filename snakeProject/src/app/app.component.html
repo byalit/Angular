@@ -1,13 +1,35 @@
-<div class="cells" [ngStyle]="ngStyleCells">
-  <div class="cell" [ngStyle]="ngStyleCell(idx)" *ngFor="let cell of cells; let idx = index;"></div>
-</div>
+<div class="main">   
+  <!----------------------------------------------------------------------------------------------------------------------------->
+    <div *ngIf="registerView == 'regView1'"> 
+  
+      <table>
+        <tr>
+          <td colspan="2"><h1>Welcome to the {{title}} game!</h1></td>
+        </tr>
+        <tr>  
+          <td colspan="2"><h3>{{errorOnInput}}</h3></td>
+        </tr>
+        <tr>
+          <td>Player name:</td>
+          <td><input type="text" id="playerName" name="playerName" class="form-control" [(ngModel)]="playerName"></td>
+        </tr>
+        <tr>
+          <td>Player email:</td>
+          <td><input type="text" id="email" name="email" class="form-control" [(ngModel)]="playerEmail"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="submit" class="button button1" (click)="startGame()">Start</button></td>
+        </tr>
+      </table> 
+  
+    </div>
+    <!-- --------------------------------------------------------------------------------------------------------------------- -->
+    <ngx-snake #game></ngx-snake>
 
-<div>
-  Length: {{this.snake.tail.length + 1}}
-</div>
-<div>
-  Time Played: {{this.time * this.timestep / 1000 | number:'1.0-0'}} s
-</div>
-<div *ngIf="dead">
-  You died.
-</div>
+    <button (click)="game.actionStart()">Start</button>
+    <button (click)="game.actionStop()">Stop</button>
+    <button (click)="game.actionReset()">Reset</button>
+    <button (click)="game.actionUp()">Up</button>
+    <button (click)="game.actionLeft()">Left</button>
+    <button (click)="game.actionRight()">Right</button>
+    <button (click)="game.actionDown()">Down</button>
