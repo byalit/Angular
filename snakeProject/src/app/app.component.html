@@ -23,7 +23,73 @@
       </table> 
   
     </div>
-    <!-- --------------------------------------------------------------------------------------------------------------------- -->
+    <!--___________________________________________________________game____________________________________________________________________________ -->
+    
+  <div *ngIf="registerView == 'regView2'">
+    
+    <h1>The game {{title}} is {{gameMode}}</h1>
+    <h3>Hi, {{playerName}} your score is: {{score}}, timer: {{display}} seconds</h3>
+    
+    <div class="tooltip">
+      <img src='./assets/img/przycisk2.ico' (click)="onExitButtonPressed()" alt="Exit">
+      <span class="tooltiptext">Exit game</span>
+    </div>
+  
+    <div id="table">
+    <ngx-snake #game  [class.black-and-white]="bw"
+        (foodEaten)="onGrow()"
+        (gameOver)="onGameOver()"></ngx-snake>
+    </div>
+    <div id="keys">
+      <table>
+        <tr>
+          <td><button class="button button2" (click)="onStartPressed()">Start</button></td>
+          <td><button class="button button4" (click)="onStopPressed()">Pause</button></td>
+          <td><button class="button button3" (click)="onResetPressed()">Reset</button></td>
+        </tr>
+        <tr>
+          
+          <td></td>
+          <td><button class="button button5" (click)="game.actionUp()">Up</button></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><button class="button button5" (click)="game.actionLeft()">Left</button></td>
+          <td></td>
+          <td><button class="button button5" (click)="game.actionRight()">Right</button></td>
+        </tr>
+        <tr>      
+          <td></td>
+          <td><button class="button button5" (click)="game.actionDown()">Down</button></td>
+          <td></td>
+        </tr>
+        <tr>      
+          <td><button class="button button6" (click)="sortAscPressed()">\/</button></td>
+          <td><button class="button button6" (click)="sortDscPressed()">/\</button></td>
+          <td>
+            <select name="action" (change)="selectChangeHandler($event)">
+              <option selected="selected" value="*">*</option>
+              <option value="start game">start game</option>
+              <option value="paused">paused</option>
+              <option value="grow">grow</option>
+            </select>
+          </td>
+        </tr>
+  
+  
+  
+      </table> 
+    </div>
+    <p><span>You selected: </span><b>{{selectedAction}}</b></p>
+  
+    <div *ngFor="let gameAction of history">
+      {{gameAction.timeStamp*1000 | date:'yyyy-MM-dd HH:mm:ss'}} - {{gameAction.act}}
+    </div>
+  
+    </div>
+  
+  </div>
+  -----------------------------------------------------------------------
     <ngx-snake #game></ngx-snake>
 
     <button (click)="game.actionStart()">Start</button>
