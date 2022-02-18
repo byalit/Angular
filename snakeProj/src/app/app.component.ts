@@ -18,6 +18,44 @@ export class AppComponent {
   public playerEmail = '';
   public history = [];   
 
+  time: number = 0;
+  display: string= '0';
+  interval: any;
+
+  startTimer() {
+    this.time = 0;
+    this.interval = setInterval(() => {
+      if (this.time >= 0) {
+        this.time++;
+      } 
+      this.display = this.time.toString();
+    }, 1000);
+  }
+
+  pauseTimer() {
+    clearInterval(this.interval);
+  }
+  clearHistory(){
+    this.history =[];
+  }
+
+   public gameStartSubmit() {
+    this.inputError = '';
+    if(!this.playerName.length){
+      this.inputError = 'Enter Your name!';
+    }
+    
+    const emailValidation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(!emailValidation.test(String(this.playerEmail).toLowerCase())){
+      this.inputError = 'Enter a valid mail!';
+    }
+
+    if(!this.inputError){
+      this.inputError = '';
+      this.registrationPage = 'registrationPage2';
+    }
+  }
+
   @ViewChild('game')
   private _snake!: NgxSnakeComponent;
 
@@ -28,7 +66,7 @@ export class AppComponent {
 
   public gameOver() {
     this.time = 0;
-    this.pauseTimer();!
+    this.pauseTimer();
     this.statusGame = "over";
     alert('game over');
   }
@@ -36,27 +74,27 @@ export class AppComponent {
   public gameStart() {
       this.statusGame = "started";
       this._snake.actionStart();
-      this.startTimer();!
+      this.startTimer();
   }
 
   public gameStop() {
     this.statusGame = "paused";
     this._snake.actionStop();
-    this.pauseTimer();!
+    this.pauseTimer();
   }
 
   public gameReset() {
     this.statusGame = "ready";
     this._snake.actionReset();
-    this.time = 0;!
-    this.display = '0';!
-    this.pauseTimer();!
-    this.clearHistory();!
+    this.time = 0;
+    this.display = '0';
+    this.pauseTimer();
+    this.clearHistory();
   }
 
   public exitGame() {
-    this.time = 0;!
-    this.display = '0';!
+    this.time = 0;
+    this.display = '0';
     this.score = 0;
     this.history = [];
     this.statusGame = "ready";

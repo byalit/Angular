@@ -28,7 +28,7 @@
   <div *ngIf="registrationPage == 'registrationPage2'">
     
   <h1 class="title">{{title}} is {{statusGame}}</h1>
-  <h3>Hi, {{playerName}} your score is: {{score}}.<br/> Timer: {{}} seconds.</h3>
+  <h3>Hi, {{playerName}} your score is: {{score}}.<br/> Timer: {{display}} seconds.</h3>
   
   <div id="table">
   <ngx-snake #game  [class.black-and-white]="bw"
@@ -56,6 +56,10 @@
         <td></td>
         <td><button class="button2" (click)="game.actionDown()">Down</button></td>
         <td></td>
+        <div class="text">
+          <img class="text2" src='./assets/img/buttonExit.ico' (click)="exitGame()" alt="Exit">
+          <span class="tipetext">Exit game</span>
+        </div>
       </tr>
     </table> 
   </div>
