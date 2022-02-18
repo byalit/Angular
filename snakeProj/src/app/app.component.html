@@ -1,0 +1,64 @@
+<div class="content">   
+  <div *ngIf="registrationPage == 'registrationPage1'"> 
+   <div class="form">
+      <div class="title">It's a {{title}} game!</div>
+      <div class="subtitle">Let's create your account!</div>
+      <div class="input-container ic1">
+        <input input type="text" id="playerName" [(ngModel)]="playerName"
+         class="input" placeholder=" "/>
+        <label for="firstname" class="placeholder">Player name</label>
+      </div>
+      <div class="input-container ic2">
+        <input type="text" id="email" name="email" [(ngModel)]="playerEmail"
+        class="input"placeholder=" " />
+        <label for="email" class="placeholder">Email </label>
+      </div>
+      <div><h3>{{inputError}}</h3></div>
+      <button type="submit" (click)="gameStartSubmit()"
+       type="text" class="submit">Play</button>
+    </div>
+
+    <p>
+        Snake game as an angular component.<br />
+        This project is licensed under the MIT license. See the LICENSE file for more info.<br />
+    </p>
+  
+  </div>
+
+  <div *ngIf="registrationPage == 'registrationPage2'">
+    
+  <h1 class="title">{{title}} is {{statusGame}}</h1>
+  <h3>Hi, {{playerName}} your score is: {{score}}.<br/> Timer: {{}} seconds.</h3>
+  
+  <div id="table">
+  <ngx-snake #game  [class.black-and-white]="bw"
+      (foodEaten)="foodEaten()"
+      (gameOver)="gameOver()"></ngx-snake>
+  </div>
+  <div id="keys">
+    <table>
+      <tr>
+        <td><button class="button" (click)="gameStart()">Start</button></td>
+        <td><button class="button" (click)="gameStop()">Pause</button></td>
+        <td><button class="button" (click)="gameReset()">Reset</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button class="button2" (click)="game.actionUp()">Up</button></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><button class="button2" (click)="game.actionLeft()">Left</button></td>
+        <td></td>
+        <td><button class="button2" (click)="game.actionRight()">Right</button></td>
+      </tr>
+      <tr>      
+        <td></td>
+        <td><button class="button2" (click)="game.actionDown()">Down</button></td>
+        <td></td>
+      </tr>
+    </table> 
+  </div>
+  </div>
+
+</div>
