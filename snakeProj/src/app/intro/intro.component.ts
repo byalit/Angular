@@ -7,17 +7,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent {
-  @Output() playerName1 = new EventEmitter<string>();
-// public registrationPage = 'registrationPage1';
+@Output() playerName1 = new EventEmitter<string>();
 public title = 'Snake';
 public inputError = ''; 
 public playerName = '';
 public playerEmail = '';
-// public showStartGamePage = {
-//   title : 'Snake',
-//   playerName : '',
-//   playerEmail :'',
-// }
+
 
 
 public gameStartSubmit() {
@@ -35,9 +30,5 @@ public gameStartSubmit() {
     this.inputError = '';
     this.playerName1.emit(this.playerName)
   }
-  
  }     
-//  public pushNamePlayer1() {
-//   this.playerName1.emit(this.playerName)
-//  }   
 }
