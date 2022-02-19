@@ -1,0 +1,65 @@
+#table {
+  width: 400px;
+  height: 400px;
+}
+
+#keys {
+  width: 300px;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  width: 90px;
+  margin: 4px 2px;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #e0400f;
+  color: white;
+}
+
+.button2 {
+  border-radius: 50%;
+  background-color: rgb(219, 230, 229);
+  color: black;
+  width: 90px;
+  margin: 4px 2px;
+  font-size: 16px;
+}
+.button2:hover {
+  background-color: #e0400f;
+  color: white;
+}
+
+.text {
+  width: 1px;
+  height: 1px;
+  position: relative;
+  display: inline-block;
+}
+.text2 {
+  width: 40px;
+  height: 40px;
+  position: right;
+  float: right;
+}
+
+.text .tipetext {
+  visibility: hidden;
+  width: 90px;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgb(27, 26, 26);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 130%;
+}
+
+.text:hover .tipetext {
+  visibility: visible;
+}
