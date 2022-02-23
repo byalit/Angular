@@ -6,12 +6,12 @@
         <div class="title">It's a {{title}} game!</div>
         <div class="subtitle">Let's create your account!</div>
         <div class="input-container ic1">
-          <input input type="text" id="playerName" ngModel name="playerName"
+          <input input type="text" id="playerName" [(ngModel)]="playerName" name = "name"
            class="input" placeholder=" " required/>
           <label for="firstname" class="placeholder">Player name</label>
         </div>
         <div class="input-container ic2">
-          <input type="text" id="email" name="email" ngModel name="playerEmail"
+          <input type="text" id="email" name="email" [(ngModel)]="playerEmail" name = "email"
           class="input"placeholder=" " required />
           <label for="email" class="placeholder">Email </label>
         </div>
