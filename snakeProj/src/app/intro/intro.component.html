@@ -1,21 +1,24 @@
   
 
      <div class="form">
+      <form #form = "ngForm" 
+      (ngSubmit)="gameStartSubmit()">
         <div class="title">It's a {{title}} game!</div>
         <div class="subtitle">Let's create your account!</div>
         <div class="input-container ic1">
-          <input input type="text" id="playerName" [(ngModel)]="playerName"
-           class="input" placeholder=" "/>
+          <input input type="text" id="playerName" ngModel name="playerName"
+           class="input" placeholder=" " required/>
           <label for="firstname" class="placeholder">Player name</label>
         </div>
         <div class="input-container ic2">
-          <input type="text" id="email" name="email" [(ngModel)]="playerEmail"
-          class="input"placeholder=" " />
+          <input type="text" id="email" name="email" ngModel name="playerEmail"
+          class="input"placeholder=" " required />
           <label for="email" class="placeholder">Email </label>
         </div>
         <div><h3>{{inputError}}</h3></div>
-        <button type="submit" (click)="gameStartSubmit()"
-         type="text" class="submit">Play</button>
+        <button type="submit"
+         type="text" class="submit" [disabled]="form.invalid">Play</button>
+       </form>
       </div>
   
       <p>
