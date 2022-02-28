@@ -1,0 +1,37 @@
+
+<h1 class="title">{{title}} is {{statusGame}}</h1>
+  <h3>Hi, {{playerName1}} your score is: {{score}}.<br/> Timer: {{display}} seconds.</h3>
+  
+  <div id="table">
+  <ngx-snake #game  [class.black-and-white]="bw"
+      (foodEaten)="foodEaten()"
+      (gameOver)="gameOver()"></ngx-snake>
+  </div>
+  <div id="keys">
+    <table>
+      <tr>
+        <td><button class="button" (click)="gameStart()">Start</button></td>
+        <td><button class="button" (click)="gameStop()">Pause</button></td>
+        <td><button class="button" (click)="gameReset()">Reset</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button class="button2" (click)="game.actionUp()">Up</button></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><button class="button2" (click)="game.actionLeft()">Left</button></td>
+        <td></td>
+        <td><button class="button2" (click)="game.actionRight()">Right</button></td>
+      </tr>
+      <tr>      
+        <td></td>
+        <td><button class="button2" (click)="game.actionDown()">Down</button></td>
+        <td></td>
+        <div class="text">
+          <img class="text2" src='../../assets/img/buttonExit.ico' (click)="exitGame()" alt="Exit" playerName1="playerName1">
+          <span class="tipetext">Exit game</span>
+        </div>
+      </tr>
+    </table> 
+  </div>
