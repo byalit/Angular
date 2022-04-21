@@ -1,28 +1,45 @@
-  
+<div class="form">
+  <form #form="ngForm" (ngSubmit)="gameStartSubmit()">
+    <div class="title">It's a {{ title }} game!</div>
+    <div class="subtitle">Let's create your account!</div>
+    <div class="input-container ic1">
+      <input
+        input
+        type="text"
+        id="playerName"
+        [(ngModel)]="playerName"
+        name="name"
+        class="input"
+        placeholder=" "
+        required
+      />
+      <label for="firstname" class="placeholder">Player name</label>
+    </div>
+    <div class="input-container ic2">
+      <input
+        type="text"
+        id="email"
+        name="email"
+        [(ngModel)]="playerEmail"
+        name="email"
+        class="input"
+        placeholder=" "
+        required
+      />
+      <label for="email" class="placeholder">Email </label>
+    </div>
 
-     <div class="form">
-      <form #form = "ngForm" 
-      (ngSubmit)="gameStartSubmit()">
-        <div class="title">It's a {{title}} game!</div>
-        <div class="subtitle">Let's create your account!</div>
-        <div class="input-container ic1">
-          <input input type="text" id="playerName" [(ngModel)]="playerName" name = "name"
-           class="input" placeholder=" " required/>
-          <label for="firstname" class="placeholder">Player name</label>
-        </div>
-        <div class="input-container ic2">
-          <input type="text" id="email" name="email" [(ngModel)]="playerEmail" name = "email"
-          class="input"placeholder=" " required />
-          <label for="email" class="placeholder">Email </label>
-        </div>
-        <div><h3>{{inputError}}</h3></div>
-        <button type="submit"
-         type="text" class="submit" [disabled]="form.invalid">Play</button>
-       </form>
-      </div>
-  
-      <p>
-          Snake game as an angular component.<br />
-          This project is licensed under the MIT license. See the LICENSE file for more info.<br />
-      </p>
-    
+    <div>
+      <h3>{{ inputError }}</h3>
+    </div>
+    <button type="submit" type="text" class="submit" [disabled]="form.invalid">
+      Play
+    </button>
+  </form>
+</div>
+
+<p>
+  Snake game as an angular component.<br />
+  This project is licensed under the MIT license. <br />
+  See the LICENSE file for more info.<br />
+</p>

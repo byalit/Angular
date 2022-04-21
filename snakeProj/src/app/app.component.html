@@ -1,10 +1,11 @@
-<div class="content"> 
-<!-- intro -->
-  <div *ngIf="registrationPage">
+<div class="content">
+  <!-- intro -->
+  <router-outlet></router-outlet>
+  <!-- <div *ngIf="registrationPage">
    <app-intro (playerName1)="onGamePage( $event )"></app-intro>
-  </div>
-<!-- game -->
-   <div *ngIf="registrationPage1">
+  </div> -->
+  <!-- game -->
+  <!-- <div *ngIf="registrationPage1">
     <app-main [playerName1]="playerName1" (exitGame1)="exitGame()"></app-main>
-   </div>
+   </div> -->
 </div>

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserdataService } from './../userdata.service';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,13 +9,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent {
-@Output() playerName1 = new EventEmitter<string>();
+constructor(
+  private _router: Router, 
+  private _customerService: UserdataService) { }
+// @Output() playerName1 = new EventEmitter<string>();
 public title = 'Snake';
 public inputError = ''; 
 public playerName = '';
 public playerEmail = '';
-
-
 
 public gameStartSubmit() {
   this.inputError = '';
@@ -28,7 +31,10 @@ public gameStartSubmit() {
 
   if(!this.inputError){
     this.inputError = '';
-    this.playerName1.emit(this.playerName)
+    // this.playerName1.emit(this.playerName);
+    this._customerService.setName(this.playerName)
+    this._router.navigate(['/high-scores']);
+
   }
  }     
 }

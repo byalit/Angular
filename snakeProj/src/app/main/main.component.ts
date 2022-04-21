@@ -1,3 +1,6 @@
+import { IntroComponent } from './../intro/intro.component';
+import { Router } from '@angular/router';
+import { UserdataService } from './../userdata.service';
 import { Component, ViewChild , Input, EventEmitter, Output } from '@angular/core';
 import {NgxSnakeComponent, NgxSnakeModule} from 'ngx-snake';
 
@@ -8,17 +11,28 @@ import {NgxSnakeComponent, NgxSnakeModule} from 'ngx-snake';
 })
 export class MainComponent {  
   @Output() exitGame1 = new EventEmitter<void>();
-  @Input()
+  // @Input()
   public playerName1 = '';
   public bw = false;
   public title = 'Snake';
   public statusGame = "ready";
   public score = 0;   
   public history = [];
+  public data = [];
   
   time: number = 0;
   display: string= '0';
   interval: any;
+  
+  constructor ( 
+    private _userName: UserdataService,
+    private _router: Router
+    ) {
+       if (!this._userName.playerName2) {
+       this._router.navigate (['/IntroComponent']);
+      }
+  this.playerName1 = this._userName.playerName2;
+  }
 
   startTimer() {
     this.time = 0;
