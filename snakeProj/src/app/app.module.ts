@@ -23,7 +23,7 @@ import { OrderPipe } from './order.pipe';
         NgxSnakeModule,
         FormsModule,
         RouterModule.forRoot([
-            { path: 'main', component: MainComponent },
+            { path: 'main/:color', component: MainComponent },
             { path: 'intro', component: IntroComponent },
             { path: 'high-scores', component: HighscoresComponent },
             { path: '**', redirectTo: '/intro' }

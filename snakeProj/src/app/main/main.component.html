@@ -7,7 +7,7 @@
 <div id="table">
   <ngx-snake
     #game
-    [class.black-and-white]="bw"
+    [ngClass]="{'black-and-white':color==='highContrast'}"
     (foodEaten)="foodEaten()"
     (gameOver)="gameOver()"
   ></ngx-snake>

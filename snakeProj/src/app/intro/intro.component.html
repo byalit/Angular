@@ -1,5 +1,5 @@
-<div class="form">
-  <form #form="ngForm" (ngSubmit)="gameStartSubmit()">
+<div class="form" *ngFor="let color of availableColors">
+  <form #form="ngForm" (ngSubmit)="gameStartSubmit(color)">
     <div class="title">It's a {{ title }} game!</div>
     <div class="subtitle">Let's create your account!</div>
     <div class="input-container ic1">
@@ -32,8 +32,15 @@
     <div>
       <h3>{{ inputError }}</h3>
     </div>
+
+    <button
+      type="submit"
+      type="text"
+      class="submit"
+      [disabled]="form.invalid"
+    ></button>
     <button type="submit" type="text" class="submit" [disabled]="form.invalid">
-      Play
+      Play {{ color }}
     </button>
   </form>
 </div>

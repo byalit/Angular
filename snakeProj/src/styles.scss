@@ -26,17 +26,6 @@ button {
   padding: 10px;
 }
 
-ngx-snake {
-  ngx-snake-tile {
-    background: #a7220b;
-    &.free {
-      div {
-        background: #d89415;
-      }
-    }
-  }
-}
-
 .form-control {
   display: block;
   width: 90%;
@@ -173,4 +162,25 @@ body {
 
 .submit:active {
   background-color: #06b;
+}
+ngx-snake {
+  &.black-and-white {
+    ngx-snake-tile {
+      background: #ffffff;
+      &.free {
+        div {
+          background: #ffffff;
+        }
+      }
+
+      &.head,
+      &.tail,
+      &.food,
+      &.body {
+        div {
+          background: #000000;
+        }
+      }
+    }
+  }
 }

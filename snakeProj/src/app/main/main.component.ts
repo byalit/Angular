@@ -1,7 +1,7 @@
-import { IntroComponent } from './../intro/intro.component';
-import { Router } from '@angular/router';
-import { UserdataService } from './../userdata.service';
-import { Component, ViewChild , Input, EventEmitter, Output } from '@angular/core';
+import {IntroComponent} from './../intro/intro.component';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserdataService} from './../userdata.service';
+import {Component, ViewChild, Input, EventEmitter, Output} from '@angular/core';
 import {NgxSnakeComponent, NgxSnakeModule} from 'ngx-snake';
 
 @Component({
@@ -9,29 +9,43 @@ import {NgxSnakeComponent, NgxSnakeModule} from 'ngx-snake';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {  
+export class MainComponent {
   @Output() exitGame1 = new EventEmitter<void>();
   // @Input()
+  // @Input()
+  public color!: string;
   public playerName1 = '';
   public bw = false;
   public title = 'Snake';
   public statusGame = "ready";
-  public score = 0;   
+  public score = 0;
   public history = [];
   public data = [];
-  
+  public availableColors = [
+    'normal',
+    'highContrast'
+  ];
+
   time: number = 0;
-  display: string= '0';
+  display: string = '0';
   interval: any;
-  
-  constructor ( 
+
+  constructor(
     private _userName: UserdataService,
-    private _router: Router
-    ) {
-       if (!this._userName.playerName2) {
-       this._router.navigate (['/IntroComponent']);
-      }
-  this.playerName1 = this._userName.playerName2;
+    private _router: Router,
+    private _route: ActivatedRoute
+  ) {
+    if (!this._userName.playerName2) {
+      this._router.navigate(['/IntroComponent']);
+      this.togglePalette = this.togglePalette.bind(this);
+    }
+    this.playerName1 = this._userName.playerName2;
+  }
+
+  ngOnInit(): void {
+    this._route.params.subscribe(({color}) => {
+      this.color = color;
+    });
   }
 
   startTimer() {
@@ -39,7 +53,7 @@ export class MainComponent {
     this.interval = setInterval(() => {
       if (this.time >= 0) {
         this.time++;
-      } 
+      }
       this.display = this.time.toString();
     }, 1000);
   }
@@ -47,19 +61,25 @@ export class MainComponent {
   pauseTimer() {
     clearInterval(this.interval);
   }
-  clearHistory(){
-    this.history =[];
+
+  clearHistory() {
+    this.history = [];
   }
 
-  
-   
+  // onColorChange(event): void {
+  //   const color = event.target.value;
+  //   this._router.navigate(['/selectedColor', color], {
+  //       relativeTo: this._route
+  //   });
+
+
   @ViewChild('game')
   private _snake!: NgxSnakeComponent;
 
 
   public foodEaten() {
     this.score++;
-    }
+  }
 
   public gameOver() {
     this.time = 0;
@@ -69,9 +89,9 @@ export class MainComponent {
   }
 
   public gameStart() {
-      this.statusGame = "started";
-      this._snake.actionStart();
-      this.startTimer();
+    this.statusGame = "started";
+    this._snake.actionStart();
+    this.startTimer();
   }
 
   public gameStop() {
@@ -88,7 +108,12 @@ export class MainComponent {
     this.pauseTimer();
     this.clearHistory();
   }
-  
+
+  public togglePalette(): void {
+    const param = this.color === 'normal' ? 'highContrast' : 'normal';
+    this._router.navigate(['/main', param]);
+  }
+
   public exitGame() {
     this.time = 0;
     this.display = '0';
@@ -97,5 +122,6 @@ export class MainComponent {
     this.statusGame = "ready";
     this._snake.actionReset();
     this.exitGame1.emit()
-  }}
+  }
+}
 
