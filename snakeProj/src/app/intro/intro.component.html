@@ -1,4 +1,4 @@
-<div class="form" *ngFor="let color of availableColors">
+<div class="form">
   <form #form="ngForm" (ngSubmit)="gameStartSubmit(color)">
     <div class="title">It's a {{ title }} game!</div>
     <div class="subtitle">Let's create your account!</div>
@@ -34,11 +34,15 @@
     </div>
 
     <button
-      type="submit"
+      type="button"
       type="text"
       class="submit"
       [disabled]="form.invalid"
-    ></button>
+      (click)="changeColor()"
+    >
+      Play high contrast
+    </button>
+
     <button type="submit" type="text" class="submit" [disabled]="form.invalid">
       Play {{ color }}
     </button>

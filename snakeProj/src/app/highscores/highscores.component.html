@@ -1,20 +1,22 @@
-<h2 class="h2">Snake Best Scores</h2>
-<label for="selectInput">Sort scores</label>
-<select id="selectInput" [(ngModel)]="filter">
-  <option value="" selected disabled hidden>Choose one</option>
-  <option value="asc">Asc</option>
-  <option value="desc">Desc</option>
-</select>
+<div class="body">
+  <h2 class="h2">Snake Best Scores</h2>
+  <label for="selectInput">Sort scores</label>
+  <select id="selectInput" [(ngModel)]="filter">
+    <option value="" selected disabled hidden>Choose one</option>
+    <option value="asc">Asc</option>
+    <option value="desc">Desc</option>
+  </select>
 
-<table id="data">
-  <tr>
-    <th *ngFor="let scor of columns">
-      {{ scor }}
-    </th>
-  </tr>
-  <tr *ngFor="let player of data.slice(0, 10) | order: filter:data.length">
-    <td *ngFor="let scor of indexs">
-      {{ player[scor] }}
-    </td>
-  </tr>
-</table>
+  <table id="data">
+    <tr>
+      <th *ngFor="let scor of columns">
+        {{ scor }}
+      </th>
+    </tr>
+    <tr *ngFor="let player of data.slice(0, 10) | order: filter:data.length">
+      <td *ngFor="let scor of indexs">
+        {{ player[scor] }}
+      </td>
+    </tr>
+  </table>
+</div>

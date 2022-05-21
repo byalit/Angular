@@ -41,17 +41,19 @@ button {
 }
 body {
   align-items: center;
+  background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.O8jj1ylIpnzUOobwsUcZrwHaE8%26pid%3DApi&f=1");
   background-color: rgb(21, 103, 117);
   display: flex;
   justify-content: center;
-  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat; /* Do not repeat the image */
 }
 
 .form {
   background-color: #042a5c;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 500px;
+  height: 600px;
   padding: 20px;
   width: 320px;
 }

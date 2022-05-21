@@ -1,5 +1,5 @@
 import { UserdataService } from './../userdata.service';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -19,11 +19,10 @@ public playerName = '';
 public playerEmail = '';
 public color: string = 'normal';
 
-public availableColors = [
-  'normal',
-  'highContrast'
-];
-
+public changeColor() {
+  this.color = 'highContrast'
+  // this.gameStartSubmit(color: string)
+}
 public gameStartSubmit(color: string){
   this.inputError = '';
   if(!this.playerName.length){
@@ -41,7 +40,6 @@ public gameStartSubmit(color: string){
     // this._router.navigate(['/high-scores']);
     color: this.color
     this._router.navigate(['/main',color]);
-    console.log(color)
   }
 
 }

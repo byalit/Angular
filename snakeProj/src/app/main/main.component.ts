@@ -1,8 +1,7 @@
-import {IntroComponent} from './../intro/intro.component';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserdataService} from './../userdata.service';
-import {Component, ViewChild, Input, EventEmitter, Output} from '@angular/core';
-import {NgxSnakeComponent, NgxSnakeModule} from 'ngx-snake';
+import {Component, ViewChild, EventEmitter, Output} from '@angular/core';
+import {NgxSnakeComponent} from 'ngx-snake';
 
 @Component({
   selector: 'app-main',
@@ -11,20 +10,14 @@ import {NgxSnakeComponent, NgxSnakeModule} from 'ngx-snake';
 })
 export class MainComponent {
   @Output() exitGame1 = new EventEmitter<void>();
-  // @Input()
-  // @Input()
   public color!: string;
   public playerName1 = '';
-  public bw = false;
   public title = 'Snake';
   public statusGame = "ready";
   public score = 0;
   public history = [];
   public data = [];
-  public availableColors = [
-    'normal',
-    'highContrast'
-  ];
+ 
 
   time: number = 0;
   display: string = '0';
@@ -65,12 +58,6 @@ export class MainComponent {
   clearHistory() {
     this.history = [];
   }
-
-  // onColorChange(event): void {
-  //   const color = event.target.value;
-  //   this._router.navigate(['/selectedColor', color], {
-  //       relativeTo: this._route
-  //   });
 
 
   @ViewChild('game')
