@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {NgxSnakeModule} from 'ngx-snake';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { IntroComponent } from './intro/intro.component';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
@@ -28,7 +28,8 @@ import { OrderPipe } from './order.pipe';
             { path: 'high-scores', component: HighscoresComponent },
             { path: '**', redirectTo: '/intro' }
         ]),
-        HttpClientModule
+        HttpClientModule,
+      ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

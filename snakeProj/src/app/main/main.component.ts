@@ -17,7 +17,7 @@ export class MainComponent {
   public score = 0;
   public history = [];
   public data = [];
- 
+
 
   time: number = 0;
   display: string = '0';

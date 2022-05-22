@@ -1,5 +1,5 @@
 <div class="form">
-  <form #form="ngForm" (ngSubmit)="gameStartSubmit(color)">
+  <form [formGroup]="form" (ngSubmit)="gameStartSubmit(color)">
     <div class="title">It's a {{ title }} game!</div>
     <div class="subtitle">Let's create your account!</div>
     <div class="input-container ic1">
@@ -7,26 +7,27 @@
         input
         type="text"
         id="playerName"
-        [(ngModel)]="playerName"
         name="name"
         class="input"
         placeholder=" "
-        required
+        formControlName="name"
       />
-      <label for="firstname" class="placeholder">Player name</label>
+      <h4 *ngIf="name?.touched && !name?.valid">This is required</h4>
+      <label for="playerName" class="placeholder">Player name</label>
+
     </div>
     <div class="input-container ic2">
       <input
         type="text"
         id="email"
         name="email"
-        [(ngModel)]="playerEmail"
-        name="email"
         class="input"
         placeholder=" "
-        required
+        formControlName="email"
       />
+      <h4 *ngIf="email?.touched && !email?.valid">This is required</h4>
       <label for="email" class="placeholder">Email </label>
+
     </div>
 
     <div>
@@ -44,7 +45,7 @@
     </button>
 
     <button type="submit" type="text" class="submit" [disabled]="form.invalid">
-      Play {{ color }}
+      Play normal color
     </button>
   </form>
 </div>

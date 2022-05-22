@@ -1,11 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 /* Application-wide Styles */
-
+h1,
 h2,
 h3 {
   color: #faf6f6;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
+}
+h4 {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 body,
