@@ -14,7 +14,6 @@
       />
       <h4 *ngIf="name?.touched && !name?.valid">This is required</h4>
       <label for="playerName" class="placeholder">Player name</label>
-
     </div>
     <div class="input-container ic2">
       <input
@@ -26,8 +25,7 @@
         formControlName="email"
       />
       <h4 *ngIf="email?.touched && !email?.valid">This is required</h4>
-      <label for="email" class="placeholder">Email </label>
-
+      <label for="email" class="placeholder">Player ID </label>
     </div>
 
     <div>
@@ -54,4 +52,5 @@
   Snake game as an angular component.<br />
   This project is licensed under the MIT license. <br />
   See the LICENSE file for more info.<br />
+  {{ getDate() | date: "yyyy" }}
 </p>

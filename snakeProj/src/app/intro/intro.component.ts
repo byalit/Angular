@@ -1,7 +1,7 @@
 import { UserdataService } from './../userdata.service';
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormBuilder, Validators} from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 
 
 @Component({
@@ -16,45 +16,50 @@ export class IntroComponent {
 
   public color: string = 'normal';
   public form = this._fb.group({
-    name:[null,[Validators.required]],
-    email:[null,[Validators.required]]
+    name: [null, [Validators.required]],
+    email: [null, [Validators.required]]
   })
-  public get name() {return this.form.get('name');}
-  public get email() {return this.form.get('email');}
-  /*public get email() {return this.form.get('email');}*/
+  public get name() { return this.form.get('name'); }
+  public get email() { return this.form.get('email'); }
 
-public constructor(
-  private _router: Router,
-  private _fb: FormBuilder,
-  private _customerService: UserdataService) {}
+  public constructor(
+    private _router: Router,
+    private _fb: FormBuilder,
+    private _customerService: UserdataService) { }
 
 
-public changeColor() {
-  this.color = 'highContrast'
-  // this.gameStartSubmit(color: string)
-}
-public gameStartSubmit(color: string){
-  this.inputError = '';
-  if(!(this.form.value.name.length >= 5)){
-    this.inputError = 'Name must be at least 5 characters long!';
+  public changeColor() {
+    this.color = 'highContrast'
   }
-
-  const emailValidation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if(!emailValidation.test(String(this.form.value.email).toLowerCase())){
-    this.inputError = 'Enter a valid mail!';
+  public getDate() {
+    return new Date();
   }
-
-  if(!this.inputError){
+  public gameStartSubmit(color: string) {
     this.inputError = '';
-    this._customerService.setName(this.form.value.name)
-    // this._router.navigate(['/high-scores']);
-    color: this.color
-    this._router.navigate(['/main',color]);
+    if (!(this.form.value.name.length >= 5)) {
+      this.inputError = 'Name must be at least 5 characters long!';
+    }
+
+    if (this.form.value.email.length !== 5) {
+      this.inputError = 'Enter a valid ID!';
+    }
+
+    // const emailValidation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // if(!emailValidation.test(String(this.form.value.email).toLowerCase())){
+    //   this.inputError = 'Enter a valid ID!';
+    // }
+
+    if (!this.inputError) {
+      this.inputError = '';
+      this._customerService.setName(this.form.value.name)
+
+      color: this.color
+      this._router.navigate(['/main', color]);
+    }
+
   }
 
 }
-
-  }
 
 
 

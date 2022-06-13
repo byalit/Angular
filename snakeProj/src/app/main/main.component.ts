@@ -1,7 +1,7 @@
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserdataService} from './../userdata.service';
-import {Component, ViewChild, EventEmitter, Output} from '@angular/core';
-import {NgxSnakeComponent} from 'ngx-snake';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserdataService } from './../userdata.service';
+import { Component, ViewChild, EventEmitter, Output } from '@angular/core';
+import { NgxSnakeComponent } from 'ngx-snake';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +9,6 @@ import {NgxSnakeComponent} from 'ngx-snake';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  @Output() exitGame1 = new EventEmitter<void>();
   public color!: string;
   public playerName1 = '';
   public title = 'Snake';
@@ -17,6 +16,8 @@ export class MainComponent {
   public score = 0;
   public history = [];
   public data = [];
+  public bestScoresVisible = true;
+  public gameVisible = false;
 
 
   time: number = 0;
@@ -36,11 +37,14 @@ export class MainComponent {
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe(({color}) => {
+    this._route.params.subscribe(({ color }) => {
       this.color = color;
     });
   }
-
+  showBestScores() {
+    this.bestScoresVisible = false;
+    this.gameVisible = true;
+  }
   startTimer() {
     this.time = 0;
     this.interval = setInterval(() => {
@@ -108,7 +112,9 @@ export class MainComponent {
     this.history = [];
     this.statusGame = "ready";
     this._snake.actionReset();
-    this.exitGame1.emit()
+    this.bestScoresVisible = true;
+    this.gameVisible = false;
+    this._router.navigate(['/IntroComponent']);
   }
 }
 
